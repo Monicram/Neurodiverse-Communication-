@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Neurodiverse Communication Translator</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Neurodiverse Communication Translator</h1>
+      <p class="subtitle">Speech to text with automatic sentence correction</p>
+
+      <div class="panel">
+        <label>Speech Input</label>
+        <button id="recordBtn" class="big-btn">🎤 Start Recording</button>
+        <div class="you-said" id="youSaid">You said: <em id="rawText">—</em></div>
+      </div>
+
+      <div class="panel">
+        <label>Target Language</label>
+        <select id="targetLang">
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="hi">Hindi</option>
+        </select>
+        <button id="translateBtn" class="big-btn green">Translate & Speak</button>
+      </div>
+
+      <div class="panel result">
+        <label>Translated Text</label>
+        <div id="translatedText" class="result-box">—</div>
+        <audio id="player" controls style="display:none"></audio>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/recorder.js"></script>
+  <script>
+    const recordBtn = document.getElementById('recordBtn');
+    const translateBtn = document.getElementById('translateBtn');
+    const rawTextEl = document.getElementById('rawText');
+    const translatedEl = document.getElementById('translatedText');
+    const player = document.getElementById('player');
+    let lastBlob = null;
+
+    // recorder.js exposes startRecording/stopRecording that return a blob
+    let isRecording = false;
+    recordBtn.onclick = async () => {
+      if (!isRecording) {
+        recordBtn.innerText = '⏺️ Recording... Click to stop';
+        isRecording = true;
+        window.recorderStart();
+      } else {
+        recordBtn.innerText = '🎤 Start Recording';
+        isRecording = false;
+        lastBlob = await window.recorderStop();
+        // optional: auto send to transcribe
+        // do nothing until user clicks Translate & Speak
+      }
+    };
+
+    translateBtn.onclick = async () => {
+      if (!lastBlob) {
+        alert("Please record audio first");
+        return;
+      }
+      const fd = new FormData();
+      fd.append('audio_data', lastBlob, 'speech.webm');
+      fd.append('target_language', document.getElementById('targetLang').value);
+      translateBtn.disabled = true;
+      translateBtn.innerText = 'Processing...';
+      const resp = await fetch('/transcribe', { method: 'POST', body: fd });
+      translateBtn.disabled = false;
+      translateBtn.innerText = 'Translate & Speak';
+      if (!resp.ok) {
+        alert('Server error');
+        return;
+      }
+      const j = await resp.json();
+      rawTextEl.innerText = j.raw || '—';
+      translatedEl.innerText = j.translated || '—';
+      if (j.audio_url) {
+        player.style.display = 'block';
+        player.src = j.audio_url;
+        player.play().catch(()=>{});
+      }
+    };
+
+  </script>
+</body>
+</html>
