@@ -50,24 +50,3 @@ cpp
 
 http://127.0.0.1:5000/
 
-
-
-🎯 Use Cases
-Assistive communication tools
-
-Accessibility-focused NLP applications
-
-Autism-friendly AI systems
-
-Inclusive communication platforms
-
-📈 Future Enhancements
-Multilingual support
-
-Real-time speech-to-text integration
-
-Mobile application support
-
-Improved transformer fine-tuning
-
-Cloud deployment
