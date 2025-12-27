@@ -49,6 +49,9 @@ python app.py
 cpp
 
 http://127.0.0.1:5000/
+
+
+
 🎯 Use Cases
 Assistive communication tools
 
