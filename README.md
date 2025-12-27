@@ -1,9 +1,9 @@
 # Neurodiverse Communication using NLP
 
 ## 📌 Project Overview
-Neurodiverse Communication is an NLP-based project designed to improve communication accessibility for neurodiverse individuals. The system uses transformer-based models to paraphrase autism-style or non-standard language into clear, standard language while preserving the original intent.
+Neurodiverse Communication is an NLP-based project designed to improve communication accessibility for neurodiverse individuals. It uses transformer-based models to paraphrase autism-style or non-standard language into clear, standard language while preserving the original intent.
 
-This project aims to bridge communication gaps using Artificial Intelligence and Natural Language Processing.
+The goal of this project is to bridge communication gaps using Artificial Intelligence and Natural Language Processing.
 
 ## 🚀 Features
 - NLP-based paraphrasing system
@@ -14,39 +14,58 @@ This project aims to bridge communication gaps using Artificial Intelligence and
 - Accessibility-focused AI solution
 
 ## 🧠 Technologies Used
-- Python
-- Natural Language Processing (NLP)
-- Transformer Models
-- Flask
-- HTML, CSS
-- Machine Learning
+- Python  
+- Natural Language Processing (NLP)  
+- Transformer Models  
+- Flask  
+- HTML, CSS  
+- Machine Learning  
 
 ## 📂 Project Structure
-- `app.py` – Flask application backend
-- `train_gEc.py` – Model training script
-- `requirements.txt` – Project dependencies
-- `templates/` – HTML templates
-- `static/` – CSS and static files
+- `app.py` – Flask backend application  
+- `train_gEc.py` – Model training script  
+- `requirements.txt` – Python dependencies  
+- `templates/` – HTML templates  
+- `static/` – Static assets (CSS, JS)  
 
 ## ▶️ How to Run the Project
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Monicram/Neurodiverse-Communication.git
+   ```
 
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/Monicram/Neurodiverse-Communication.git
-   2️⃣ Navigate to Project Folder
-bash
+2. Navigate to the project directory:
+   ```bash
+   cd Neurodiverse-Communication
+   ```
 
-cd Neurodiverse-Communication
-3️⃣ Install Dependencies
-bash
+3. Install required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-pip install -r requirements.txt
-4️⃣ Run the Application
-bash
+4. Run the application:
+   ```bash
+   python app.py
+   ```
 
-python app.py
-5️⃣ Access in Browser
-cpp
+5. Open your browser and go to:
+   ```
+   http://127.0.0.1:5000/
+   ```
 
-http://127.0.0.1:5000/
+## 🎯 Use Cases
+- Assistive communication tools  
+- Accessibility-focused NLP systems  
+- Autism-friendly AI applications  
+- Inclusive digital communication platforms  
 
+## 📈 Future Enhancements
+- Multilingual support  
+- Speech-to-text integration  
+- Mobile application version  
+- Enhanced transformer fine-tuning  
+- Cloud deployment  
+
+## ⭐ Support
+If you like this project, please give it a ⭐ on GitHub!
